@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1220">
+<title>DispatchReady Academy — Version 2</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--ink:#172033;--muted:#64748b;--brand:#2563eb;--dark:#0b1220;--line:#dfe6ef;--good:#16a34a;--bad:#dc2626;--gold:#d97706}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.55}
+.wrap{max-width:1100px;margin:auto;padding:0 18px}.top{background:var(--dark);color:white;position:sticky;top:0;z-index:20;box-shadow:0 2px 16px #0003}.nav{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px}.logo{font-size:20px;font-weight:900}.logo span{color:#60a5fa}.navlinks{display:flex;gap:3px;flex-wrap:wrap}.navlinks button{background:transparent;color:#dbeafe;border:0;padding:8px 9px;border-radius:8px;cursor:pointer;font-weight:650}.navlinks button:hover{background:#ffffff14}
+.hero{background:linear-gradient(135deg,#0b1220,#172554 60%,#1e3a8a);color:white;padding:48px 0}.hero h1{font-size:clamp(34px,7vw,58px);line-height:1.03;margin:8px 0 14px;max-width:850px}.hero p{font-size:18px;color:#dbeafe;max-width:780px}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.1em;color:#93c5fd;font-weight:900}.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+button,.btn{font:inherit;border:0;border-radius:10px;padding:10px 14px;background:var(--brand);color:#fff;font-weight:750;cursor:pointer}.btn.secondary,button.secondary{background:#475569}.btn.ghost{background:#ffffff16;border:1px solid #ffffff2b}.btn:hover,button:hover{filter:brightness(.96)}
+.page{display:none}.page.active{display:block}section{padding:32px 0}.sectionhead{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:16px}.sectionhead h2{margin:0;font-size:29px}.muted{color:var(--muted);font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:15px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:0 6px 25px #0f172a08}.card h3{margin:0 0 7px}.card p{margin:7px 0}.lesson{cursor:pointer;transition:.15s}.lesson:hover{transform:translateY(-2px);box-shadow:0 10px 30px #0f172a14}.tag{font-size:11px;color:var(--brand);font-weight:900;text-transform:uppercase;letter-spacing:.07em}.done{float:right;color:var(--good);font-weight:900}.locked{opacity:.55}
+.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:22px;margin-top:16px}.callout{padding:13px 15px;border-left:4px solid var(--brand);background:#eff6ff;border-radius:8px;margin:15px 0}.warning{border-left-color:var(--gold);background:#fff7ed}.success{border-left-color:var(--good);background:#f0fdf4}
+.progress{height:11px;background:#e5e7eb;border-radius:99px;overflow:hidden}.progress>div{height:100%;background:var(--brand);transition:.3s}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:18px}.stat{background:#ffffff12;border:1px solid #ffffff1c;border-radius:12px;padding:12px}.stat strong{display:block;font-size:24px}.stat span{font-size:12px;color:#bfdbfe}
+.formgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}.field label{display:block;font-weight:700;font-size:13px;margin-bottom:5px}.field input,.field select,.field textarea{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:9px;font:inherit;background:#fff}.result{font-size:22px;font-weight:850;margin-top:13px}
+.tabs{display:flex;gap:7px;overflow:auto;margin-bottom:14px}.tabs button{white-space:nowrap;background:#e2e8f0;color:#334155}.tabs button.active{background:var(--brand);color:white}
+.q{padding:15px 0;border-bottom:1px solid var(--line)}.q label{display:block;padding:6px 0;cursor:pointer}.feedback{font-weight:750;margin-top:8px}.correct{color:var(--good)}.incorrect{color:var(--bad)}
+table{width:100%;border-collapse:collapse;background:white}.tablewrap{overflow:auto;border:1px solid var(--line);border-radius:12px}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left;white-space:nowrap}th{background:#f8fafc}
+.checklist label{display:block;padding:9px 0}.checklist input{margin-right:8px}
+.badge{display:inline-block;padding:5px 9px;border-radius:99px;background:#dbeafe;color:#1e40af;font-size:12px;font-weight:800}.certificate{border:3px solid #1d4ed8;padding:35px;text-align:center;background:#fff;min-height:300px}
+footer{background:#0b1220;color:#cbd5e1;padding:28px 0;margin-top:25px}
+@media(max-width:700px){.navlinks{display:none}.stats{grid-template-columns:repeat(2,1fr)}.sectionhead{display:block}.hero{padding:38px 0}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+<div class="logo">Dispatch<span>Ready</span> Academy</div>
+<div class="navlinks">
+<button onclick="go('dashboard')">Dashboard</button><button onclick="go('course')">Course</button><button onclick="go('simulator')">Simulator</button><button onclick="go('tools')">Tools</button><button onclick="go('quiz')">Quiz</button><button onclick="go('career')">Career</button>
+</div></div></header>
+
+<div id="dashboard" class="page active">
+<div class="hero"><div class="wrap">
+<div class="eyebrow">Version 2 · Free self-study academy</div>
+<h1>Learn U.S. Truck Dispatching from zero to job-ready.</h1>
+<p>A structured beginner program with 30 study days, practical load simulations, broker-call practice, calculations, quizzes, interview preparation and a progress dashboard.</p>
+<div class="actions"><button onclick="go('course')">Start / Continue Course</button><button class="btn ghost" onclick="go('simulator')">Try a Dispatch Simulation</button></div>
+<div class="stats"><div class="stat"><strong id="statLessons">0/12</strong><span>modules complete</span></div><div class="stat"><strong id="statDays">0/30</strong><span>days complete</span></div><div class="stat"><strong id="statQuiz">0%</strong><span>best quiz score</span></div><div class="stat"><strong id="statXP">0</strong><span>learning points</span></div></div>
+</div></div>
+<section><div class="wrap">
+<div class="sectionhead"><h2>Your progress</h2><span class="muted">Saved automatically on this device</span></div>
+<div class="card"><div class="progress"><div id="mainProgress" style="width:0%"></div></div><p id="progressText">0% complete</p><div class="actions"><button onclick="go('course')">Continue</button><button class="secondary" onclick="resetProgress()">Reset progress</button></div></div>
+</div></section>
+<section><div class="wrap"><div class="sectionhead"><h2>What Version 2 includes</h2></div><div class="grid">
+<div class="card"><h3>📚 12 modules</h3><p>From trucking basics through job preparation.</p></div>
+<div class="card"><h3>🗓️ 30-day plan</h3><p>Small daily assignments so you know what to study next.</p></div>
+<div class="card"><h3>🚛 Dispatch simulator</h3><p>Practice evaluating loads and deciding what to ask.</p></div>
+<div class="card"><h3>📞 Call practice</h3><p>Broker questions and negotiation scenarios.</p></div>
+<div class="card"><h3>🧮 Tool suite</h3><p>RPM, total miles, revenue and route calculations.</p></div>
+<div class="card"><h3>💼 Career prep</h3><p>Resume points, interview questions and job-search checklist.</p></div>
+</div></div></section>
+</div>
+
+<div id="course" class="page"><section><div class="wrap">
+<div class="sectionhead"><h2>12-Module Course</h2><span class="muted">Complete in order</span></div><div class="grid" id="moduleGrid"></div><div id="modulePanel" class="panel" style="display:none"></div>
+</div></section></div>
+
+<div id="simulator" class="page"><section><div class="wrap">
+<div class="sectionhead"><h2>Dispatch Simulator</h2><span class="muted">Practice decisions — not live freight data</span></div>
+<div class="card"><p><span class="badge">Scenario</span> A dry-van carrier has a truck empty in <strong id="simOrigin">Dallas, TX</strong>. A broker offers the load below.</p>
+<div class="tablewrap"><table><tbody id="simTable"></tbody></table></div>
+<div class="actions"><button onclick="evaluateSim()">Evaluate Load</button><button class="secondary" onclick="newSim()">New Scenario</button></div><div id="simResult"></div></div>
+<div class="card" style="margin-top:15px"><h3>Questions to ask before booking</h3><div class="checklist">
+<label><input type="checkbox"> Is the load still available?</label><label><input type="checkbox"> Exact pickup and delivery addresses?</label><label><input type="checkbox"> Appointment times?</label><label><input type="checkbox"> Commodity and weight?</label><label><input type="checkbox"> Equipment requirements?</label><label><input type="checkbox"> Rate and payment terms?</label><label><input type="checkbox"> Detention/accessorial terms?</label><label><input type="checkbox"> Any special instructions?</label>
+</div></div>
+</div></section></div>
+
+<div id="tools" class="page"><section><div class="wrap">
+<div class="sectionhead"><h2>Dispatcher Tool Suite</h2><span class="muted">Practice calculations</span></div>
+<div class="grid">
+<div class="card"><h3>RPM Calculator</h3><div class="formgrid"><div class="field"><label>Load rate ($)</label><input id="r1" type="number" placeholder="1950"></div><div class="field"><label>Loaded miles</label><input id="m1" type="number" placeholder="780"></div></div><button style="margin-top:12px" onclick="rpm()">Calculate</button><div id="rr" class="result"></div></div>
+<div class="card"><h3>True total-mile RPM</h3><div class="formgrid"><div class="field"><label>Rate ($)</label><input id="r2" type="number"></div><div class="field"><label>Deadhead</label><input id="d2" type="number"></div><div class="field"><label>Loaded miles</label><input id="l2" type="number"></div></div><button style="margin-top:12px" onclick="totalRpm()">Calculate</button><div id="tr" class="result"></div></div>
+<div class="card"><h3>Revenue per day</h3><div class="formgrid"><div class="field"><label>Weekly gross ($)</label><input id="rw" type="number"></div><div class="field"><label>Working days</label><input id="dw" type="number" value="5"></div></div><button style="margin-top:12px" onclick="daily()">Calculate</button><div id="dr" class="result"></div></div>
+<div class="card"><h3>USD → PKR practice</h3><p class="muted">Enter your own current exchange rate. This is not a live FX feed.</p><div class="formgrid"><div class="field"><label>USD</label><input id="usd" type="number" value="100"></div><div class="field"><label>PKR per USD</label><input id="fx" type="number" value="280"></div></div><button style="margin-top:12px" onclick="fxcalc()">Convert</button><div id="fxr" class="result"></div></div>
+</div>
+</div></section></div>
+
+<div id="quiz" class="page"><section><div class="wrap">
+<div class="sectionhead"><h2>Knowledge Test</h2><span class="muted">15 questions · 70% target</span></div><div class="card" id="quizBox"></div>
+</div></section></div>
+
+<div id="career" class="page"><section><div class="wrap">
+<div class="sectionhead"><h2>First Job Center</h2><span class="muted">Prepare before applying</span></div>
+<div class="tabs"><button class="active" onclick="careerTab('resume',this)">Resume</button><button onclick="careerTab('interview',this)">Interview</button><button onclick="careerTab('search',this)">Job Search</button><button onclick="careerTab('call',this)">Call Script</button></div>
+<div id="careerContent"></div>
+</div></section></div>
+
+<div id="plan" class="page"><section><div class="wrap"><div class="sectionhead"><h2>30-Day Learning Plan</h2><span class="muted">Check off each day</span></div><div id="daysGrid" class="grid"></div></div></section></div>
+
+<div id="certificate" class="page"><section><div class="wrap"><div class="sectionhead"><h2>Completion Certificate</h2><span class="muted">Local practice certificate</span></div><div class="card certificate" id="cert"><div class="eyebrow">DISPATCHREADY ACADEMY</div><h1>Certificate of Course Completion</h1><p>This certifies that</p><h2 id="certName">Student</h2><p>has completed the DispatchReady beginner truck-dispatching learning program.</p><p id="certDate"></p><button onclick="print()">Print / Save as PDF</button></div><div class="callout warning">This is a self-study completion certificate, not an industry license, government credential or guarantee of employment.</div></div></section></div>
+
+<footer><div class="wrap"><strong>DispatchReady Academy V2</strong><p>Educational practice only. Load-board access, broker requirements, laws, HOS rules and rates can change. Verify current requirements before handling real freight.</p><button class="secondary" onclick="go('plan')">Open 30-Day Plan</button> <button class="secondary" onclick="go('certificate')">Certificate</button></div></footer>
+
+<script>
+const modules=[
+["01","How Dispatching Works","Roles, workflow and what a dispatcher is responsible for.","Learn carrier, driver, shipper, broker, load, booking and tracking. Build the full load lifecycle in your head."],
+["02","Equipment & Freight","Dry van, reefer, flatbed and common freight concepts.","Understand equipment requirements, commodity, weight, dimensions and why equipment mismatch can ruin a booking."],
+["03","U.S. Geography","Freight lanes, states, cities and route awareness.","Practice major freight areas and use maps to understand where a truck can position after delivery."],
+["04","Load Boards","How dispatchers read a load listing.","Learn origin, destination, pickup, delivery, miles, rate, equipment, weight and broker information."],
+["05","Rate & RPM","Evaluate the money side of a load.","Calculate loaded RPM, total-mile RPM and understand why deadhead and operating costs matter."],
+["06","Driver Hours & Timing","Plan realistic schedules.","Learn why pickup/delivery timing must be checked against the driver's available time and current location."],
+["07","Broker Calls","Ask the right questions.","Practice concise calls, verification, rate negotiation and professional follow-up."],
+["08","Booking & Rate Con","Understand the booking process.","Learn what to check on a rate confirmation and why you should not rely on verbal assumptions."],
+["09","BOL, POD & Tracking","Manage the operational paperwork.","Understand BOL, POD, check calls, arrival/departure updates and documentation flow."],
+["10","Problem Solving","Handle common dispatch problems.","Late truck, appointment changes, breakdown, detention and communication escalation."],
+["11","Dispatcher Ethics & Safety","Work accurately and responsibly.","Never fabricate information, conceal important facts or pressure a driver into unsafe/legal-risky behavior."],
+["12","First Job & Career","Move from learner to applicant.","Resume, interview, mock call, job search, employer questions and first-week expectations."]
+];
+const moduleBody=[
+`<p>A dispatcher coordinates freight for a carrier. The basic cycle is <strong>find → qualify → negotiate → book → communicate → track → deliver → document → reload</strong>.</p><ul><li>Carrier: transportation company.</li><li>Driver: operates the truck.</li><li>Broker: arranges freight between shipper and carrier.</li><li>Shipper: origin-side customer with freight.</li><li>Receiver/consignee: destination-side party receiving freight.</li></ul><div class="callout">Exercise: explain this workflow out loud without reading it.</div>`,
+`<p>Start with three common equipment categories:</p><ul><li><strong>Dry van:</strong> enclosed trailer for many general-freight loads.</li><li><strong>Reefer:</strong> temperature-controlled equipment.</li><li><strong>Flatbed:</strong> open trailer often used for freight requiring different loading/unloading arrangements.</li></ul><p>Always confirm that the load's requirements match the carrier's actual equipment.</p>`,
+`<p>Learn major freight regions rather than trying to memorize every road. Practice Texas, California, Georgia, Florida, Illinois, Ohio, Pennsylvania, Tennessee, North Carolina and New Jersey.</p><p>Use a map to trace Dallas → Atlanta, Houston → Memphis, Chicago → Indianapolis and Atlanta → Charlotte. Then identify possible next markets.</p>`,
+`<p>A load listing should be read as a set of constraints, not just a dollar amount.</p><ul><li>Origin and destination</li><li>Pickup and delivery appointments</li><li>Equipment</li><li>Commodity and weight</li><li>Loaded miles and likely deadhead</li><li>Rate and accessorial terms</li><li>Broker/contact information</li></ul><div class="callout warning">Do not book based on rate alone.</div>`,
+`<p><strong>Loaded RPM = rate ÷ loaded miles.</strong></p><p>Example: $1,950 ÷ 780 = $2.50 loaded RPM.</p><p>If the truck drives 50 deadhead miles to pickup, total miles become 830, so total-mile RPM is $1,950 ÷ 830 ≈ $2.35.</p><p>RPM is only one factor. The carrier's costs and the next-load opportunity also matter.</p>`,
+`<p>Timing is a core dispatch skill. Before booking, compare the truck's current location, deadhead to pickup, appointment windows, route time and delivery appointment with the driver's available hours.</p><div class="callout warning">Never ask or encourage a driver to violate applicable hours-of-service or safety requirements. When uncertain, verify the current rule or company procedure.</div>`,
+`<p>A professional broker call is short and accurate.</p><div class="callout"><strong>“Hi, I'm calling about the Dallas to Atlanta load. Is it still available?”</strong><br>Then confirm: pickup, delivery, commodity, weight, equipment, appointments, rate and special requirements.</div><p>Negotiation: “Is there any flexibility on the rate? If you can do $1,950, we can take it.”</p>`,
+`<p>After the broker agrees to the load, review the rate confirmation carefully. Check locations, dates/times, rate, equipment, commodity, special instructions and accessorial terms. If something conflicts with what was discussed, ask before dispatching the driver.</p>`,
+`<p>A BOL is a key shipment document. A POD is proof/documentation of delivery. Tracking/check calls communicate progress to the relevant parties.</p><p>Keep records organized. Exact document and payment procedures vary by carrier and broker.</p>`,
+`<p>Common problems include a late truck, changed appointment, breakdown, detention or missing paperwork.</p><p>Use a simple approach: <strong>verify facts → communicate early → document → follow company procedure → escalate when necessary.</strong></p>`,
+`<p>Accuracy matters. Do not invent a truck location, driver's hours, documents, equipment or delivery status. Do not pressure a driver to take an unsafe action.</p><div class="callout success">A dispatcher builds value by making the operation more organized and predictable—not by hiding problems.</div>`,
+`<p>For your first job, target roles such as <strong>Truck Dispatcher, Freight Dispatcher, Dispatcher Trainee, Dispatch Assistant</strong> or <strong>Logistics Coordinator</strong>.</p><ul><li>Prepare a one-page resume.</li><li>Practice a 30-second introduction.</li><li>Be ready for a mock broker call.</li><li>Ask employers what equipment, lanes, software and schedule they use.</li><li>Avoid paying recruitment fees or believing guaranteed-income promises.</li></ul>`
+];
+
+const days=[
+["1","Industry overview","Learn carrier, driver, broker, shipper and receiver."],["2","Load lifecycle","Explain find → book → track → deliver → reload."],["3","Equipment","Study dry van, reefer and flatbed."],["4","Freight terms","Learn commodity, weight, appointment and accessorial."],["5","Geography I","Study Texas, Georgia, Florida and Tennessee."],["6","Geography II","Study Illinois, Ohio, Pennsylvania and North Carolina."],["7","Review","Explain the first week's material without notes."],
+["8","Load listing","Practice reading every field of a sample load."],["9","RPM","Do 10 RPM calculations."],["10","Deadhead","Do 10 total-mile calculations."],["11","Timing","Practice pickup/delivery scheduling scenarios."],["12","Driver communication","Write five clear driver updates."],["13","Broker questions","Memorize the core pre-booking questions."],["14","Mock call","Read the broker script aloud five times."],
+["15","Rate negotiation","Practice three respectful counteroffers."],["16","Rate confirmation","Learn what details to verify."],["17","BOL/POD","Learn the purpose of both documents."],["18","Tracking","Practice three check-call updates."],["19","Problem solving","Work through a late-truck scenario."],["20","Detention","Learn why documentation and terms matter."],["21","Review","Complete the quiz and revisit weak areas."],
+["22","Ethics","Study accuracy and safety principles."],["23","Resume","Draft your dispatcher-focused resume."],["24","Interview","Practice five interview answers."],["25","Job search","Find 10 relevant job postings."],["26","Mock interview","Answer questions aloud."],["27","Mock dispatch","Complete two simulator scenarios."],["28","Weak areas","Review your lowest quiz topics."],["29","Final practice","Run a full find-to-delivery workflow."],["30","Job-ready day","Polish resume, practice call and start applying."]
+];
+
+const quiz=[
+["What is a dispatcher primarily doing?","Coordinating freight and communication for a carrier","Driving the truck","Manufacturing trailers","Inspecting highways",0],
+["What is deadhead?","Miles without a paying load","A refrigerated trailer","A broker invoice","A delivery document",0],
+["RPM means:","Rate per mile","Route payment method","Required pickup minute","Reefer power mode",0],
+["A BOL is:","Bill of Lading","Broker Operating License","Booking Online List","Basic Operator Log",0],
+["POD generally means:","Proof of Delivery","Price of Diesel","Pickup Order Data","Port of Dispatch",0],
+["Before booking, you should check:","Only the rate","Key load, equipment and timing details","Only the destination","Only the broker name",1],
+["A $2,000 load with 1,000 loaded miles has loaded RPM of:","$1","$2","$3","$4",1],
+["A professional negotiation should be:","Accurate and respectful","Aggressive and misleading","Based on invented facts","Silent",0],
+["Which is common dry-van equipment?","Enclosed trailer","Open motorcycle","Passenger car","Container ship",0],
+["If a load conflicts with the driver's available hours, you should:","Ignore it","Verify and plan legally/safely before booking","Tell the driver to drive faster","Hide the conflict",1],
+["What should you do when a rate confirmation differs from what was agreed?","Ignore it","Ask the broker/carrier to clarify before dispatch","Delete it","Change it yourself",1],
+["A useful problem-solving sequence is:","Verify → communicate → document → escalate as needed","Hide → guess → blame","Book first → ask later","Ignore the broker",0],
+["Which is a useful first-job title?","Dispatcher Trainee","Highway Architect","Trailer Painter","Freight Pilot",0],
+["Should you pay someone for a guaranteed dispatcher job?","Treat guarantees and recruitment fees as warning signs","Always","Only if they promise $10,000","Yes, without verification",0],
+["What builds trust in dispatching?","Accurate information and consistent communication","Invented driver updates","Hidden delays","Unverified promises",0]
+];
+
+let state=JSON.parse(localStorage.getItem("dispatchV2")||'{"mods":[],"days":[],"best":0,"xp":0,"sim":0}');
+function save(){localStorage.setItem("dispatchV2",JSON.stringify(state));renderStats()}
+function renderStats(){
+ document.getElementById("statLessons").textContent=`${state.mods.length}/12`;
+ document.getElementById("statDays").textContent=`${state.days.length}/30`;
+ document.getElementById("statQuiz").textContent=`${state.best}%`;
+ document.getElementById("statXP").textContent=state.xp;
+ let pct=Math.round(((state.mods.length/12)+(state.days.length/30))/2*100);
+ document.getElementById("mainProgress").style.width=pct+"%";document.getElementById("progressText").textContent=pct+"% complete";
+}
+function go(id){document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");if(id==="course")renderModules();if(id==="quiz")renderQuiz();if(id==="plan")renderDays();if(id==="career")careerTab("resume",document.querySelector(".tabs button"));if(id==="simulator")newSim();if(id==="certificate"){document.getElementById("certDate").textContent="Completed: "+new Date().toLocaleDateString();}scrollTo(0,0)}
+function renderModules(){document.getElementById("moduleGrid").innerHTML=modules.map((m,i)=>`<div class="card lesson ${i>0&&!state.mods.includes(i-1)?"locked":""}" onclick="openModule(${i})"><span class="tag">Module ${m[0]}</span><span class="done">${state.mods.includes(i)?"✓":""}</span><h3>${m[1]}</h3><p>${m[2]}</p><span class="muted">${m[3]}</span></div>`).join("")}
+function openModule(i){
+ if(i>0&&!state.mods.includes(i-1)){alert("Complete the previous module first.");return}
+ let p=document.getElementById("modulePanel");p.style.display="block";p.innerHTML=`<span class="tag">Module ${modules[i][0]}</span><h2>${modules[i][1]}</h2><div>${moduleBody[i]}</div><div class="actions"><button onclick="completeModule(${i})">${state.mods.includes(i)?"Completed ✓":"Mark module complete (+100 XP)"}</button><button class="secondary" onclick="p.style.display='none'">Close</button></div>`;p.scrollIntoView({behavior:"smooth"})
+}
+function completeModule(i){if(!state.mods.includes(i)){state.mods.push(i);state.mods.sort((a,b)=>a-b);state.xp+=100;save()}renderModules();openModule(i)}
+function renderDays(){document.getElementById("daysGrid").innerHTML=days.map((d,i)=>`<div class="card"><span class="tag">Day ${d[0]}</span><h3>${d[1]}</h3><p>${d[2]}</p><label><input type="checkbox" ${state.days.includes(i)?"checked":""} onchange="toggleDay(${i},this.checked)"> Complete</label></div>`).join("")}
+function toggleDay(i,on){if(on&&!state.days.includes(i)){state.days.push(i);state.xp+=20}if(!on)state.days=state.days.filter(x=>x!==i);state.days.sort((a,b)=>a-b);save()}
+function rpm(){let r=+r1.value,m=+m1.value;rr.textContent=r>0&&m>0?"$"+(r/m).toFixed(2)+" loaded RPM":"Enter valid values."}
+function totalRpm(){let r=+r2.value,d=+d2.value,l=+l2.value,t=d+l;tr.textContent=r>0&&t>0?"$"+(r/t).toFixed(2)+" total-mile RPM ("+t+" miles)":"Enter valid values."}
+function daily(){let r=+rw.value,d=+dw.value;dr.textContent=r>0&&d>0?"$"+(r/d).toFixed(2)+" gross/day":"Enter valid values."}
+function fxcalc(){let u=+usd.value,f=+fx.value;fxr.textContent=u>0&&f>0?"PKR "+(u*f).toLocaleString():"Enter valid values."}
+const sims=[
+{from:"Dallas, TX",to:"Atlanta, GA",rate:1950,loaded:780,dead:35,weight:"38,000 lb",equip:"Dry Van",pickup:"Tomorrow 09:00",delivery:"Next day 16:00",note:"Normal appointments."},
+{from:"Houston, TX",to:"Memphis, TN",rate:1400,loaded:570,dead:25,weight:"44,000 lb",equip:"Dry Van",pickup:"Today 18:00",delivery:"Tomorrow 08:00",note:"Tight overnight schedule."},
+{from:"Chicago, IL",to:"Indianapolis, IN",rate:650,loaded:185,dead:10,weight:"42,000 lb",equip:"Dry Van",pickup:"Tomorrow 10:00",delivery:"Tomorrow 15:00",note:"Short haul."},
+{from:"Atlanta, GA",to:"Charlotte, NC",rate:900,loaded:245,dead:60,weight:"43,000 lb",equip:"Dry Van",pickup:"Today 15:00",delivery:"Tomorrow 09:00",note:"Moderate deadhead."}
+];
+let currentSim=0;
+function newSim(){currentSim=(currentSim+1)%sims.length;let s=sims[currentSim];simOrigin.textContent=s.from;simTable.innerHTML=`<tr><th>Origin</th><td>${s.from}</td></tr><tr><th>Destination</th><td>${s.to}</td></tr><tr><th>Rate</th><td>$${s.rate}</td></tr><tr><th>Loaded miles</th><td>${s.loaded}</td></tr><tr><th>Deadhead</th><td>${s.dead}</td></tr><tr><th>Weight</th><td>${s.weight}</td></tr><tr><th>Equipment</th><td>${s.equip}</td></tr><tr><th>Pickup</th><td>${s.pickup}</td></tr><tr><th>Delivery</th><td>${s.delivery}</td></tr><tr><th>Note</th><td>${s.note}</td></tr>`;simResult.innerHTML=""}
+function evaluateSim(){let s=sims[currentSim],rpm=s.rate/s.loaded,total=s.rate/(s.loaded+s.dead);let caution=s.note.includes("Tight")||s.dead>50;simResult.innerHTML=`<div class="callout ${caution?"warning":"success"}"><strong>Practice analysis:</strong> Loaded RPM is $${rpm.toFixed(2)}; total-mile RPM is $${total.toFixed(2)}. ${caution?"This scenario deserves extra timing/deadhead checks before booking.":"The numbers are straightforward, but you still need to verify all booking details and driver availability."}</div>`;state.sim++;state.xp+=25;save()}
+function renderQuiz(){document.getElementById("quizBox").innerHTML=quiz.map((q,i)=>`<div class="q"><strong>${i+1}. ${q[0]}</strong>${q.slice(1,5).map((a,j)=>`<label><input type="radio" name="q${i}" value="${j}"> ${a}</label>`).join("")}<div id="fb${i}" class="feedback"></div></div>`).join("")+`<div class="actions"><button onclick="gradeQuiz()">Submit Test</button><button class="secondary" onclick="renderQuiz()">Reset</button></div><div id="quizScore" class="result"></div>`}
+function gradeQuiz(){let s=0;quiz.forEach((q,i)=>{let x=document.querySelector(`input[name=q${i}]:checked`),f=document.getElementById("fb"+i);if(x&&+x.value===q[5]){s++;f.textContent="Correct";f.className="feedback correct"}else{f.textContent="Review this topic";f.className="feedback incorrect"}});let pct=Math.round(s/quiz.length*100);if(pct>state.best)state.best=pct;state.xp+=pct>=70?100:25;save();quizScore.textContent=`Score: ${s}/${quiz.length} (${pct}%). ${pct>=70?"Passed — keep practicing your weak topics.":"Review the course and try again."}`}
+function careerTab(tab,btn){document.querySelectorAll(".tabs button").forEach(b=>b.classList.remove("active"));if(btn)btn.classList.add("active");let c=document.getElementById("careerContent");
+const data={
+resume:`<div class="card"><h3>Resume checklist</h3><ul><li>Clear title: “Truck Dispatcher — Entry Level / Trainee”</li><li>Communication and customer-service experience</li><li>U.S. trucking terminology studied</li><li>RPM/load-planning practice</li><li>Google Sheets/Docs and phone communication</li><li>English communication skills</li><li>Availability and willingness to learn the employer's workflow</li></ul><div class="callout">Do not claim professional experience you do not have. Describe your training honestly.</div></div>`,
+interview:`<div class="card"><h3>Practice questions</h3><ol><li>What does a truck dispatcher do?</li><li>What is RPM?</li><li>What is deadhead?</li><li>What information do you confirm before booking?</li><li>How would you handle a late truck?</li><li>How would you negotiate a rate?</li><li>What would you do if the rate confirmation differs from the verbal agreement?</li></ol><div class="callout"><strong>30-second introduction:</strong> “I'm trained in the fundamentals of U.S. truck dispatching, including load evaluation, RPM calculations, broker communication and dispatch paperwork. I'm looking for an entry-level opportunity where I can learn the company's process and become productive.”</div></div>`,
+search:`<div class="card"><h3>Search terms</h3><p>Try: <span class="badge">Truck Dispatcher</span> <span class="badge">Dispatcher Trainee</span> <span class="badge">Freight Dispatcher</span> <span class="badge">Dispatch Assistant</span> <span class="badge">Logistics Coordinator</span></p><h3>Safety checklist</h3><ul><li>Don't pay a recruiter for a guaranteed job.</li><li>Verify the company and job description.</li><li>Ask whether equipment/software is provided.</li><li>Ask about schedule and U.S. time-zone coverage.</li><li>Clarify whether compensation is salary, commission or another structure.</li></ul></div>`,
+call:`<div class="card"><h3>Mock broker call</h3><div class="callout"><strong>You:</strong> “Hi, I'm calling about the Dallas to Atlanta load. Is it still available?”</div><p>Then ask:</p><ol><li>Pickup and delivery locations?</li><li>Appointment times?</li><li>Commodity and weight?</li><li>Equipment requirements?</li><li>Any special instructions?</li><li>What is the best rate?</li><li>What are the detention/accessorial terms?</li></ol><div class="callout success"><strong>Close:</strong> Confirm the final rate and request the rate confirmation.</div></div>`};c.innerHTML=data[tab]}
+function resetProgress(){if(confirm("Reset all course progress, quiz score and points?")){state={mods:[],days:[],best:0,xp:0,sim:0};save();renderModules();renderDays();alert("Progress reset.")}}
+renderStats();renderModules();renderQuiz();renderDays();careerTab("resume",document.querySelector(".tabs button"));newSim();
+</script>
+</body>
+</html>
